@@ -6,7 +6,7 @@ library(gridExtra)
 
 # # pull latest SEP into table from pdf
 latest_sep_date <-  format(today(), "%Y%m%d")
-text <-  paste0("https://www.federalreserve.gov/monetarypolicy/files/fomcprojtabl", latest_sep_date, ".pdf")
+text <-  paste0("https://www.federalreserve.gov/monetarypolicy/files/fomcprojtabl", latest_sep, ".pdf")
 
 download.file(text, "latest_sep_pdf.pdf", mode = "wb")
 
@@ -18,7 +18,7 @@ raw_pdf <- pdf_text("latest_sep_pdf.pdf")
  
 sep_table <- 
    raw_sep[11:24] %>% 
-     # str_squish() %>% 
+     str_squish() %>%
      str_replace("Core PCE inflation4", "Core PCE inflation")
 
 
